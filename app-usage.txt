@@ -1,0 +1,16 @@
+This dockerfile compile sbt aplications.
+
+OS Alpine
+Java version 1.8
+Scala version 2.11.7
+Sbt version 0.13.8
+
+Simple usage example:
+
+docker run -it --rm -v "$PWD:/app"  own3dh2so4/sbt-builder sbt {sbtOption}
+
+Where $PWD is the repository path where exist a build.sbt file.
+
+Caching the sbt packages in local host
+
+docker run -it --rm -v "$PWD:/app" -v "$HOME/.ivy2:/root/.ivy2" sbt-builder sbt {sbtOption}

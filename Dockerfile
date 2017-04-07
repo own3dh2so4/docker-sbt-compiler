@@ -2,6 +2,13 @@ FROM openjdk:8-alpine
 
 MAINTAINER David Garcia <david.garcia.alvarez.93@gmail.com>
 
+#LABELS
+LABEL org.label-schema.build-date="2017-04-07T08:20:50.52Z"
+LABEL org.label-schema.usage="/usr/doc/app-usage.txt"
+LABEL org.label-schema.vcs-url="https://github.com/own3dh2so4/docker-sbt-compiler"
+LABEL org.label-schema.vendor="own3dh2so4"
+LABEL org.label-schema.docker.cmd="docker run -it --rm -v \"$PWD:/app\" -v \"$HOME/.ivy2:/root/.ivy2\" sbt-builder sbt {sbtOption}"
+
 # Scala related variables
 ARG SCALA_VERSION=2.11.7
 ARG SCALA_BINARY_ARCHIVE_NAME=scala-${SCALA_VERSION}
@@ -27,6 +34,7 @@ ENV ALPINE_GLIBC_I18N_PACKAGE_FILENAME glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.
 
 ENV LANG=C.UTF-8
 
+ADD app-usage.txt /usr/doc/app-usage.txt
 
 # Install GLIBC
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
